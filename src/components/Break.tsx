@@ -1,8 +1,10 @@
 import { useState } from "react";
 import moment from "moment";
 
+const breakTime = 300;
+
 export const Break = () => {
-  const [breakLenght, setBreakLenght] = useState(300);
+  const [breakLenght, setBreakLenght] = useState(breakTime);
   const decrementBreakByOneMinute = () => {
     const newBreakLenght = breakLenght - 60;
     newBreakLenght < 0 ? setBreakLenght(0) : setBreakLenght(newBreakLenght);
