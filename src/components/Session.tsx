@@ -1,4 +1,3 @@
-import { useState } from "react";
 import moment from "moment";
 
 type Props = {

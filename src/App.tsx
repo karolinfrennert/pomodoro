@@ -5,6 +5,7 @@ import { Break } from "./components/Break";
 
 import "./App.css";
 import { Session } from "./components/Session";
+import { TimeLeft } from "./components/TimeLeft";
 
 function App() {
   const [sessionLenght, setSessionLenght] = useState(1500);
@@ -39,6 +40,7 @@ function App() {
         decrementBreakByOneMinute={decrementBreakByOneMinute}
         incrementBreakByOneMinute={incrementBreakByOneMinute}
       />
+      <TimeLeft sessionLength={sessionLenght} />
       <Session
         sessionLength={sessionLenght}
         decrementSessionByOneMinute={decrementSessionByOneMinute}
