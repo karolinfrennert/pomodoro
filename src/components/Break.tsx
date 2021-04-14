@@ -1,20 +1,17 @@
-import { useState } from "react";
 import moment from "moment";
 
-const breakTime = 300;
+type Props = {
+  breakLength: number;
+  decrementBreakByOneMinute: any;
+  incrementBreakByOneMinute: any;
+};
 
-export const Break = () => {
-  const [breakLenght, setBreakLenght] = useState(breakTime);
-  const decrementBreakByOneMinute = () => {
-    const newBreakLenght = breakLenght - 60;
-    newBreakLenght < 0 ? setBreakLenght(0) : setBreakLenght(newBreakLenght);
-  };
-  const incrementBreakByOneMinute = () => {
-    const newBreakLenght = breakLenght + 60;
-    newBreakLenght < 0 ? setBreakLenght(0) : setBreakLenght(newBreakLenght);
-  };
-
-  const breakLenghtInMinutes = moment.duration(breakLenght, "s").minutes();
+export const Break = ({
+  breakLength,
+  decrementBreakByOneMinute,
+  incrementBreakByOneMinute,
+}: Props) => {
+  const breakLenghtInMinutes = moment.duration(breakLength, "s").minutes();
 
   return (
     <div>

@@ -1,25 +1,18 @@
 import { useState } from "react";
 import moment from "moment";
 
-const sessionTime = 1500;
+type Props = {
+  sessionLength: number;
+  decrementSessionByOneMinute: any;
+  incrementSessionByOneMinute: any;
+};
 
-export const Session = () => {
-  const [sessionLenght, setSessionLenght] = useState(sessionTime);
-  const decrementSessionByOneMinute = () => {
-    const newSessionLenght = sessionLenght - 60;
-    newSessionLenght < 0
-      ? setSessionLenght(0)
-      : setSessionLenght(newSessionLenght);
-  };
-  const incrementSessionByOneMinute = () => {
-    const newSessionLenght = sessionLenght + 60;
-    newSessionLenght < 0
-      ? setSessionLenght(0)
-      : setSessionLenght(newSessionLenght);
-  };
-
-  const sessionLenghtInMinutes = moment.duration(sessionLenght, "s").minutes();
-
+export const Session = ({
+  sessionLength,
+  decrementSessionByOneMinute,
+  incrementSessionByOneMinute,
+}: Props) => {
+  const sessionLenghtInMinutes = moment.duration(sessionLength, "s").minutes();
   return (
     <div>
       <p id="session-label">Session</p>
