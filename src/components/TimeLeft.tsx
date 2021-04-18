@@ -1,5 +1,6 @@
 import * as moment from "moment";
 import momentDurationFormatSetup from "moment-duration-format";
+import { Button } from "./Atoms/Button";
 
 momentDurationFormatSetup(moment);
 
@@ -24,7 +25,7 @@ export const TimeLeft: React.FC<Props> = ({
     <div>
       <p id="timer-label">{timerLabel}</p>
       <p id="time-left">{formattedTimeLeft}</p>
-      <button onClick={handleStartStopClick}>{startStopButtonLable}</button>
+      <Button onClick={handleStartStopClick}>{startStopButtonLable}</Button>
     </div>
   );
 };

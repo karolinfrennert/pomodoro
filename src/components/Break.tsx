@@ -1,18 +1,6 @@
 import moment from "moment";
-import styled from "styled-components";
-
-export const Button = styled.button`
-  background: transparent;
-  border-radius: 3px;
-  border: 2px solid palevioletred;
-  color: palevioletred;
-  margin: 0 1em;
-  padding: 0.25em 1em;
-`;
-
-export const Title = styled.h2`
-  color: palevioletred;
-`;
+import { Title } from "./Atoms";
+import { Button } from "./Atoms/Button";
 
 type Props = {
   breakLength: number;
@@ -35,6 +23,7 @@ export const Break: React.FC<Props> = ({
         id="break-decrement"
         onClick={decrementBreakByOneMinute}
         key="break-decrese"
+        ghost
       >
         -
       </Button>
@@ -42,6 +31,7 @@ export const Break: React.FC<Props> = ({
         id="break-increment"
         onClick={incrementBreakByOneMinute}
         key="break-increase"
+        ghost
       >
         +
       </Button>

@@ -1,5 +1,5 @@
 import moment from "moment";
-import { Title, Button } from "./Break";
+import { Button, Title } from "./Atoms";
 
 type Props = {
   sessionLength: number;
@@ -23,6 +23,7 @@ export const Session: React.FC<Props> = ({
         id="session-decrement"
         onClick={decrementSessionByOneMinute}
         key="session-decrese"
+        ghost
       >
         -
       </Button>
@@ -30,6 +31,7 @@ export const Session: React.FC<Props> = ({
         id="session-increment"
         onClick={incrementSessionByOneMinute}
         key="session-increase"
+        ghost
       >
         +
       </Button>
