@@ -1,9 +1,16 @@
-import moment from "moment";
+import * as moment from "moment";
 import momentDurationFormatSetup from "moment-duration-format";
 
 momentDurationFormatSetup(moment);
 
-export const TimeLeft = ({
+type Props = {
+  startStopButtonLable: string;
+  handleStartStopClick: () => void;
+  timerLabel: string;
+  timeLeft: number;
+};
+
+export const TimeLeft: React.FC<Props> = ({
   startStopButtonLable,
   handleStartStopClick,
   timerLabel,
