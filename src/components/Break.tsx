@@ -1,4 +1,18 @@
 import moment from "moment";
+import styled from "styled-components";
+
+const Button = styled.button`
+  background: transparent;
+  border-radius: 3px;
+  border: 2px solid palevioletred;
+  color: palevioletred;
+  margin: 0 1em;
+  padding: 0.25em 1em;
+`;
+
+export const Title = styled.h2`
+  color: palevioletred;
+`;
 
 type Props = {
   breakLength: number;
@@ -15,22 +29,22 @@ export const Break: React.FC<Props> = ({
 
   return (
     <div>
-      <p id="break-label">Set break time</p>
+      <Title id="break-label">Set break time</Title>
       <p id="break-length">{breakLenghtInMinutes}</p>
-      <button
+      <Button
         id="break-decrement"
         onClick={decrementBreakByOneMinute}
         key="break-decrese"
       >
         -
-      </button>
-      <button
+      </Button>
+      <Button
         id="break-increment"
         onClick={incrementBreakByOneMinute}
         key="break-increase"
       >
         +
-      </button>
+      </Button>
     </div>
   );
 };

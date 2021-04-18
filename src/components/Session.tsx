@@ -1,4 +1,5 @@
 import moment from "moment";
+import { Title } from "./Break";
 
 type Props = {
   sessionLength: number;
@@ -16,7 +17,7 @@ export const Session: React.FC<Props> = ({
     .asMinutes();
   return (
     <div>
-      <p id="session-label">Set session time</p>
+      <Title id="session-label">Set session time</Title>
       <p id="session-length">{sessionLenghtInMinutes}</p>
       <button
         id="session-decrement"

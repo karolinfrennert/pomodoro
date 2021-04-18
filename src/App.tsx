@@ -1,6 +1,4 @@
-import React, { useRef } from "react";
-
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Break } from "./components/Break";
 
 import "./App.css";
@@ -75,13 +73,10 @@ function App() {
   };
 
   const handleResetButtonClick = () => {
-    if (intervalId === null) {
-      return;
-    }
-
     audioElement?.current?.load();
-
-    clearInterval(intervalId);
+    if (intervalId) {
+      clearInterval(intervalId);
+    }
     setIntervalId(null);
     setCurrentSessionType("Session");
     setSessionLenght(SESSION_LENGTH);
