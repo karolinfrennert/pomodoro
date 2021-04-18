@@ -22,6 +22,20 @@ function App() {
     setTimeLeft(sessionLenght);
   }, [sessionLenght]);
 
+  useEffect(() => {
+    if (timeLeft === 0) {
+      audioElement?.current?.play();
+
+      if (currentSessionType === "Session") {
+        setCurrentSessionType("Break");
+        setTimeLeft(breakLenght);
+      } else if (currentSessionType === "Break") {
+        setCurrentSessionType("Session");
+        setTimeLeft(sessionLenght);
+      }
+    }
+  }, [breakLenght, sessionLenght, currentSessionType, timeLeft]);
+
   const decrementSessionByOneMinute = () => {
     const newSessionLenght = sessionLenght - 60;
     newSessionLenght < 0
@@ -53,31 +67,7 @@ function App() {
       setIntervalId(null);
     } else {
       const newIntervalId = setInterval(() => {
-        setTimeLeft((prev) => {
-          const newTimeLeft = prev - 1;
-          if (newTimeLeft > 0) {
-            return newTimeLeft;
-          }
-          console.log("Changed", prev);
-          if (!audioElement.current) {
-            console.log("Audio broken ", audioElement.current);
-          } else {
-            console.log(audioElement.current);
-            audioElement.current.play();
-          }
-
-          if (currentSessionType === "Session") {
-            setCurrentSessionType("Break");
-            return breakLenght;
-          }
-
-          if (currentSessionType === "Break") {
-            setCurrentSessionType("Session");
-            return sessionLenght;
-          }
-
-          return prev;
-        });
+        setTimeLeft((prev) => prev - 1);
       }, 1000);
 
       setIntervalId(newIntervalId);
@@ -86,15 +76,11 @@ function App() {
 
   const handleResetButtonClick = () => {
     if (intervalId === null) {
-      console.log("hey");
       return;
     }
 
-    if (audioElement.current === null) {
-      throw Error("Audio Element is not available");
-    } else {
-      audioElement.current.load();
-    }
+    audioElement?.current?.load();
+
     clearInterval(intervalId);
     setIntervalId(null);
     setCurrentSessionType("Session");
