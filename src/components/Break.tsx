@@ -2,15 +2,15 @@ import moment from "moment";
 
 type Props = {
   breakLength: number;
-  decrementBreakByOneMinute: any;
-  incrementBreakByOneMinute: any;
+  decrementBreakByOneMinute: () => void;
+  incrementBreakByOneMinute: () => void;
 };
 
-export const Break = ({
+export const Break: React.FC<Props> = ({
   breakLength,
   decrementBreakByOneMinute,
   incrementBreakByOneMinute,
-}: Props) => {
+}) => {
   const breakLenghtInMinutes = moment.duration(breakLength, "s").asMinutes();
 
   return (

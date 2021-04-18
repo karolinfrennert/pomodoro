@@ -2,11 +2,11 @@ import moment from "moment";
 
 type Props = {
   sessionLength: number;
-  decrementSessionByOneMinute: any;
-  incrementSessionByOneMinute: any;
+  decrementSessionByOneMinute: () => void;
+  incrementSessionByOneMinute: () => void;
 };
 
-export const Session = ({
+export const Session: React.FC<Props> = ({
   sessionLength,
   decrementSessionByOneMinute,
   incrementSessionByOneMinute,
