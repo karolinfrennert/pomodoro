@@ -1,5 +1,5 @@
 import moment from "moment";
-import { Title } from "./Break";
+import { Title, Button } from "./Break";
 
 type Props = {
   sessionLength: number;
@@ -19,20 +19,20 @@ export const Session: React.FC<Props> = ({
     <div>
       <Title id="session-label">Set session time</Title>
       <p id="session-length">{sessionLenghtInMinutes}</p>
-      <button
+      <Button
         id="session-decrement"
         onClick={decrementSessionByOneMinute}
         key="session-decrese"
       >
         -
-      </button>
-      <button
+      </Button>
+      <Button
         id="session-increment"
         onClick={incrementSessionByOneMinute}
         key="session-increase"
       >
         +
-      </button>
+      </Button>
     </div>
   );
 };
