@@ -7,12 +7,15 @@ import { TimeLeft } from "./components/TimeLeft";
 
 const BREAK_LENGTH = 300;
 const SESSION_LENGTH = 1500;
+const SESSION = "Time to focus";
+const BREAK = "Take a break";
+const RESET = "Reset timer";
 
 function App() {
   const audioElement = useRef<HTMLAudioElement | null>(null);
   const [sessionLenght, setSessionLenght] = useState(SESSION_LENGTH);
   const [breakLenght, setBreakLenght] = useState(BREAK_LENGTH);
-  const [currentSessionType, setCurrentSessionType] = useState("Session");
+  const [currentSessionType, setCurrentSessionType] = useState(SESSION);
   const [timeLeft, setTimeLeft] = useState(sessionLenght);
   const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
 
@@ -24,11 +27,11 @@ function App() {
     if (timeLeft === 0) {
       audioElement?.current?.play();
 
-      if (currentSessionType === "Session") {
-        setCurrentSessionType("Break");
+      if (currentSessionType === SESSION) {
+        setCurrentSessionType(BREAK);
         setTimeLeft(breakLenght);
-      } else if (currentSessionType === "Break") {
-        setCurrentSessionType("Session");
+      } else if (currentSessionType === BREAK) {
+        setCurrentSessionType(SESSION);
         setTimeLeft(sessionLenght);
       }
     }
@@ -78,7 +81,7 @@ function App() {
       clearInterval(intervalId);
     }
     setIntervalId(null);
-    setCurrentSessionType("Session");
+    setCurrentSessionType(SESSION);
     setSessionLenght(SESSION_LENGTH);
     setBreakLenght(BREAK_LENGTH);
     setTimeLeft(SESSION_LENGTH);
@@ -103,7 +106,7 @@ function App() {
         incrementSessionByOneMinute={incrementSessionByOneMinute}
       />
       <button id="reset" onClick={handleResetButtonClick}>
-        Reset
+        {RESET}
       </button>
       <audio id="beep" ref={audioElement}>
         <source

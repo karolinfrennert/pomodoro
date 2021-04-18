@@ -29,7 +29,7 @@ export const Break: React.FC<Props> = ({
 
   return (
     <div>
-      <Title id="break-label">Set break time</Title>
+      <Title id="break-label">Break length</Title>
       <p id="break-length">{breakLenghtInMinutes}</p>
       <Button
         id="break-decrement"

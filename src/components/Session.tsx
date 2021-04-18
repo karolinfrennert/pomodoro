@@ -17,7 +17,7 @@ export const Session: React.FC<Props> = ({
     .asMinutes();
   return (
     <div>
-      <Title id="session-label">Set session time</Title>
+      <Title id="session-label">Session length</Title>
       <p id="session-length">{sessionLenghtInMinutes}</p>
       <Button
         id="session-decrement"
