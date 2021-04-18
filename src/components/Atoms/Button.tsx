@@ -14,6 +14,8 @@ export const Button = styled.button<Props>`
       : css`
           background: var(--main-color);
           color: white;
+          width: 50%;
+          place-self: center;
         `};
   border-radius: 3px;
   border: 2px solid var(--main-color);

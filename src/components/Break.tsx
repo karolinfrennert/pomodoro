@@ -1,4 +1,5 @@
 import moment from "moment";
+import styled from "styled-components";
 import { Title } from "./Atoms";
 import { Button } from "./Atoms/Button";
 
@@ -16,25 +17,36 @@ export const Break: React.FC<Props> = ({
   const breakLenghtInMinutes = moment.duration(breakLength, "s").asMinutes();
 
   return (
-    <div>
+    <StyledBreak>
       <Title id="break-label">Break length</Title>
       <p id="break-length">{breakLenghtInMinutes}</p>
-      <Button
-        id="break-decrement"
-        onClick={decrementBreakByOneMinute}
-        key="break-decrese"
-        ghost
-      >
-        -
-      </Button>
-      <Button
-        id="break-increment"
-        onClick={incrementBreakByOneMinute}
-        key="break-increase"
-        ghost
-      >
-        +
-      </Button>
-    </div>
+      <div className="flex">
+        <Button
+          id="break-decrement"
+          onClick={decrementBreakByOneMinute}
+          key="break-decrese"
+          ghost
+        >
+          -
+        </Button>
+        <Button
+          id="break-increment"
+          onClick={incrementBreakByOneMinute}
+          key="break-increase"
+          ghost
+        >
+          +
+        </Button>
+      </div>
+    </StyledBreak>
   );
 };
+
+const StyledBreak = styled.div`
+  display: grid;
+  grid-area: break;
+  .flex {
+    display: flex;
+    justify-content: center;
+  }
+`;

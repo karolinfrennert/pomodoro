@@ -4,6 +4,7 @@ import { Button } from "./Atoms/Button";
 
 import { Session } from "./Session";
 import { TimeLeft } from "./TimeLeft";
+import styled from "styled-components";
 
 const BREAK_LENGTH = 300;
 const SESSION_LENGTH = 1500;
@@ -88,24 +89,28 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <Break
-        breakLength={breakLenght}
-        decrementBreakByOneMinute={decrementBreakByOneMinute}
-        incrementBreakByOneMinute={incrementBreakByOneMinute}
-      />
+    <StyledApp>
       <TimeLeft
         handleStartStopClick={handleStartStopClick}
         timerLabel={currentSessionType}
         startStopButtonLable={isStarted ? "Stop" : "Start"}
         timeLeft={timeLeft}
       />
+      <Break
+        breakLength={breakLenght}
+        decrementBreakByOneMinute={decrementBreakByOneMinute}
+        incrementBreakByOneMinute={incrementBreakByOneMinute}
+      />
       <Session
         sessionLength={sessionLenght}
         decrementSessionByOneMinute={decrementSessionByOneMinute}
         incrementSessionByOneMinute={incrementSessionByOneMinute}
       />
-      <Button id="reset" onClick={handleResetButtonClick}>
+      <Button
+        id="reset"
+        className="button__reset"
+        onClick={handleResetButtonClick}
+      >
         {RESET}
       </Button>
       <audio id="beep" ref={audioElement}>
@@ -114,8 +119,16 @@ function App() {
           type="audio/mpeg"
         ></source>
       </audio>
-    </div>
+    </StyledApp>
   );
 }
 
 export default App;
+
+const StyledApp = styled.main`
+  display: grid;
+  grid-template-areas: "timeleft timeleft" "break session" "reset reset";
+  .button__reset {
+    grid-area: reset;
+  }
+`;

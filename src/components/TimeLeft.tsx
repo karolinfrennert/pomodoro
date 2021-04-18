@@ -1,6 +1,7 @@
 import * as moment from "moment";
 import momentDurationFormatSetup from "moment-duration-format";
-import { Button } from "./Atoms/Button";
+import { Title, Button } from "./Atoms";
+import styled from "styled-components";
 
 momentDurationFormatSetup(moment);
 
@@ -22,10 +23,15 @@ export const TimeLeft: React.FC<Props> = ({
     .format("mm:ss", { trim: false });
 
   return (
-    <div>
-      <p id="timer-label">{timerLabel}</p>
+    <StyledTimeleft>
+      <Title id="timer-label">{timerLabel}</Title>
       <p id="time-left">{formattedTimeLeft}</p>
       <Button onClick={handleStartStopClick}>{startStopButtonLable}</Button>
-    </div>
+    </StyledTimeleft>
   );
 };
+
+const StyledTimeleft = styled.div`
+  display: grid;
+  grid-area: timeleft;
+`;
