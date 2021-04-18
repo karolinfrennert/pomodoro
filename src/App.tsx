@@ -7,8 +7,8 @@ import "./App.css";
 import { Session } from "./components/Session";
 import { TimeLeft } from "./components/TimeLeft";
 
-const BREAK_LENGTH = 30;
-const SESSION_LENGTH = 10;
+const BREAK_LENGTH = 300;
+const SESSION_LENGTH = 1500;
 
 function App() {
   const audioElement = useRef<HTMLAudioElement | null>(null);
@@ -56,11 +56,11 @@ function App() {
         setTimeLeft((prev) => {
           const newTimeLeft = prev - 1;
           if (newTimeLeft > 0) {
-            return prev - 1;
+            return newTimeLeft;
           }
           console.log("Changed", prev);
           if (!audioElement.current) {
-            console.log("AUDIO BROOOKNEEEEENNNNENENN ", audioElement.current);
+            console.log("Audio broken ", audioElement.current);
           } else {
             console.log(audioElement.current);
             audioElement.current.play();
@@ -68,17 +68,17 @@ function App() {
 
           if (currentSessionType === "Session") {
             setCurrentSessionType("Break");
-            setTimeLeft(breakLenght);
+            return breakLenght;
           }
 
           if (currentSessionType === "Break") {
             setCurrentSessionType("Session");
-            setTimeLeft(sessionLenght);
+            return sessionLenght;
           }
 
           return prev;
         });
-      }, 100);
+      }, 1000);
 
       setIntervalId(newIntervalId);
     }
@@ -93,7 +93,7 @@ function App() {
     if (audioElement.current === null) {
       throw Error("Audio Element is not available");
     } else {
-      audioElement.current.play();
+      audioElement.current.load();
     }
     clearInterval(intervalId);
     setIntervalId(null);
@@ -130,7 +130,6 @@ function App() {
           type="audio/mpeg"
         ></source>
       </audio>
-      <button onClick={() => audioElement.current?.play()}> PLAY AUDIO</button>
     </div>
   );
 }

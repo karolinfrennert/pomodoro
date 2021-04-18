@@ -11,10 +11,12 @@ export const Session = ({
   decrementSessionByOneMinute,
   incrementSessionByOneMinute,
 }: Props) => {
-  const sessionLenghtInMinutes = moment.duration(sessionLength, "s").minutes();
+  const sessionLenghtInMinutes = moment
+    .duration(sessionLength, "s")
+    .asMinutes();
   return (
     <div>
-      <p id="session-label">Session</p>
+      <p id="session-label">Set session time</p>
       <p id="session-length">{sessionLenghtInMinutes}</p>
       <button
         id="session-decrement"

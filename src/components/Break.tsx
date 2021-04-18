@@ -11,11 +11,11 @@ export const Break = ({
   decrementBreakByOneMinute,
   incrementBreakByOneMinute,
 }: Props) => {
-  const breakLenghtInMinutes = moment.duration(breakLength, "s").minutes();
+  const breakLenghtInMinutes = moment.duration(breakLength, "s").asMinutes();
 
   return (
     <div>
-      <p id="break-label">Break</p>
+      <p id="break-label">Set break time</p>
       <p id="break-length">{breakLenghtInMinutes}</p>
       <button
         id="break-decrement"
