@@ -1,7 +1,6 @@
 import moment from "moment";
 import styled from "styled-components";
-import { Title } from "./Atoms";
-import { Button } from "./Atoms/Button";
+import { Title, Button } from "./Atoms";
 
 type Props = {
   breakLength: number;
@@ -19,7 +18,7 @@ export const Break: React.FC<Props> = ({
   return (
     <StyledBreak>
       <Title id="break-label">Break length</Title>
-      <p id="break-length">{breakLenghtInMinutes}</p>
+      <Title id="break-length">{breakLenghtInMinutes}</Title>
       <div className="flex">
         <Button
           id="break-decrement"

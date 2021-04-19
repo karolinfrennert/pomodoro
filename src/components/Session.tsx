@@ -19,7 +19,7 @@ export const Session: React.FC<Props> = ({
   return (
     <StyledSession>
       <Title id="session-label">Session length</Title>
-      <p id="session-length">{sessionLenghtInMinutes}</p>
+      <Title id="session-length">{sessionLenghtInMinutes}</Title>
       <div className="flex">
         <Button
           id="session-decrement"

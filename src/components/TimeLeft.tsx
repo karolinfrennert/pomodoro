@@ -25,7 +25,7 @@ export const TimeLeft: React.FC<Props> = ({
   return (
     <StyledTimeleft>
       <Title id="timer-label">{timerLabel}</Title>
-      <p id="time-left">{formattedTimeLeft}</p>
+      <Title id="time-left">{formattedTimeLeft}</Title>
       <Button onClick={handleStartStopClick}>{startStopButtonLable}</Button>
     </StyledTimeleft>
   );
